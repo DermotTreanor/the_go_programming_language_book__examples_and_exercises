@@ -7,6 +7,7 @@ import (
 	"os"
 	"strings"
 	"errors"
+	"time"
 )
 
 func make_connection(add string){
@@ -33,7 +34,8 @@ func main() {
 		location := input[0]
 		server_addr := input[1]
 		fmt.Printf("Trying location, %s, at the following address: \u001b[31m%s\u001b[0m\n", strings.ToUpper(location), server_addr)
-		make_connection(server_addr)
+		go make_connection(server_addr)
 	}
+	time.Sleep(30 * time.Second)
 
 }
