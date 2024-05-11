@@ -10,7 +10,6 @@ import (
 
 func handleConnection(c net.Conn){
 	defer c.Close()
-	fmt.Fprintln(c, "Hello", "there!")
 	for{
 		_, err := fmt.Fprint(c, time.Now().Format("15:04:05\r"))
 		if err != nil{
