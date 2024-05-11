@@ -40,7 +40,7 @@ func main(){
 		//Block until we hear a connection
 		connection, _ := listener.Accept()
 		//Pass the net.Conn object to a function to handle
-		handleConnection(connection)
+		go handleConnection(connection)
 	}	
 }
 
