@@ -22,13 +22,13 @@ func handleConnection(c net.Conn){
 }
 
 
-var port int = *flag.Int("port", 8000, "selects the port number to bind the server to")
+var port *int = flag.Int("port", 8000, "selects the port number to bind the server to")
 
 func main(){
 
 	flag.Parse()
-	address := fmt.Sprintf("localhost:%d", port)
-	fmt.Println(port)
+	address := fmt.Sprintf("localhost:%d", *port)
+	fmt.Println(*port)
 	//Create a listener
 	listener, err := net.Listen("tcp", address)
 	if err !=nil{
@@ -41,7 +41,6 @@ func main(){
 		connection, _ := listener.Accept()
 		//Pass the net.Conn object to a function to handle
 		handleConnection(connection)
-	}
-	
+	}	
 }
 
