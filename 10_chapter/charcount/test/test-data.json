@@ -1,0 +1,47 @@
+[
+	{
+		"Phrase": "I am here to kick ass and chew bubblegum\nAnd €I'm all out of bubblegum",
+		"TestID": 1,
+		"Want": 70
+	},
+	{
+		"Phrase": " ",
+		"TestID": 2,
+		"Want": 1
+	},
+	{
+		"Phrase": "abcdefghijklmnopqrstuvwxyz",
+		"TestID": 3,
+		"Want": 26
+	},
+	{
+		"Phrase": "\t\n\t\n\t",
+		"TestID": 4,
+		"Want": 5
+	},
+	{
+		"Phrase": "The quick brown fox jumped over the lazy dog.",
+		"TestID": 5,
+		"Want": 45
+	},
+	{
+		"Phrase": "!\"£$%^\u0026*(')",
+		"TestID": 6,
+		"Want": 11
+	},
+	{
+		"Phrase": "Hello, 世界",
+		"TestID": 7,
+		"Want": 9
+	},
+	{
+		"Phrase": "Fīat iūstitia ruat cælum",
+		"TestID": 8,
+		"Want": 24
+	},
+	{
+		"Phrase": "",
+		"TestID": 9,
+		"Want": 0
+	}
+]
