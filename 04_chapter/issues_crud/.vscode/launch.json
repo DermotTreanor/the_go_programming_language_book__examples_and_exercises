@@ -10,7 +10,8 @@
             "request": "launch",
             "mode": "auto",
             "program": "${fileDirname}",
-	    "args": ["repo:python/cpython", "is:open"]
+	    "args": ["repo:python/cpython", "is:open"],
+        "console": "integratedTerminal"
         }
     ]
 }

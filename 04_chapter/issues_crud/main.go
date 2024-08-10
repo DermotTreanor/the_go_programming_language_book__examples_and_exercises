@@ -1,66 +1,33 @@
-// Copyright © 2016 Alan A. A. Donovan & Brian W. Kernighan.
-// License: https://creativecommons.org/licenses/by-nc-sa/4.0/
-
-// See page 112.
-//!+
-
-// Issues prints a table of GitHub issues matching the search terms.
 package main
 
 import (
 	"fmt"
-	"log"
-	"os"
-	"time"
+	"issues/pkg/api"
 
-	"gopl.io/ch4/github"
+	"log"
 )
 
-// !+
 func main() {
-	result, err := github.SearchIssues(os.Args[1:])
-	if err != nil {
-		log.Fatal(err)
+
+	fmt.Println("Select an operation to perform on an issue: [C]reate, [R]ead, [U]pdate, or [D]elete")
+	var in string
+	fmt.Scanf("%s\n", &in)
+	fmt.Println(in)
+	switch in[0] {
+	case byte('c'), byte('C'):
+		fmt.Println("You want to create")
+		api.CreateIssue()
+	case byte('r'), byte('R'):
+		fmt.Println("You want to read")
+		api.ReadIssue()
+	case byte('u'), byte('U'):
+		fmt.Println("You want to update")
+		api.UpdateIssue()
+	case byte('d'), byte('D'):
+		fmt.Println("You want to delete")
+		api.DeleteIssue()
+	default:
+		log.Fatal("Invalid option selected.")
 	}
-	fmt.Printf("%d issues:\n", result.TotalCount)
-	n := time.Now()
-	var tf string
-	for _, item := range result.Items {
-		d := n.Sub(item.CreatedAt)
-		switch {
-		case d < (time.Hour * 24):
-			tf = "<day."
-		case d < (time.Hour * 24 * 7):
-			tf = "<week."
-		case d < (time.Hour * 24 * 30):
-			tf = "<month."
-		default:
-			tf = ">month"
-		}
-		fmt.Printf("#%-5d %9.9s %.55q | %s\n",
-			item.Number, item.User.Login, item.Title, tf)
-	}
+
 }
-
-//!-
-
-/*
-//!+textoutput
-$ go build gopl.io/ch4/issues
-$ ./issues repo:golang/go is:open json decoder
-13 issues:
-#5680    eaigner encoding/json: set key converter on en/decoder
-#6050  gopherbot encoding/json: provide tokenizer
-#8658  gopherbot encoding/json: use bufio
-#8462  kortschak encoding/json: UnmarshalText confuses json.Unmarshal
-#5901        rsc encoding/json: allow override type marshaling
-#9812  klauspost encoding/json: string tag not symmetric
-#7872  extempora encoding/json: Encoder internally buffers full output
-#9650    cespare encoding/json: Decoding gives errPhase when unmarshalin
-#6716  gopherbot encoding/json: include field name in unmarshal error me
-#6901  lukescott encoding/json, encoding/xml: option to treat unknown fi
-#6384    joeshaw encoding/json: encode precise floating point integers u
-#6647    btracey x/tools/cmd/godoc: display type kind of each named type
-#4237  gjemiller encoding/base64: URLEncoding padding is optional
-//!-textoutput
-*/
