@@ -49,12 +49,16 @@ func (c *call) makeRequest() github.Issue {
 	if err != nil{
 		log.Printf("makeRequest: couldn't open file to get pak: \n%v", err)
 	}
-	req.Header.Set("Authorization", string(pak))
+	fmt.Println(string(pak))
+	req.Header.Set("Authorization", fmt.Sprintf("Bearer %s", string(pak)))
 
 	var ir github.Issue
-	resp, _ := http.DefaultClient.Do(req)
+	resp, err := http.DefaultClient.Do(req)
+	if err != nil{
+		fmt.Println(err)
+	}
 	d, _ := io.ReadAll(resp.Body)
-	//fmt.Println(string(d))
+	fmt.Println(string(d))
 	json.Unmarshal([]byte(d), &ir)
 	return ir
 

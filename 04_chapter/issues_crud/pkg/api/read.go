@@ -31,6 +31,6 @@ func CreateIssue() {
 	var cCall call
 	fmt.Print("Please specify the owner and repo: ")
 	fmt.Scan(&cCall.owner, &cCall.repo)
-
+	cCall.issue.Title = "AH SHUR ETIL WINFE!"
 	cCall.makeRequest()
 }
