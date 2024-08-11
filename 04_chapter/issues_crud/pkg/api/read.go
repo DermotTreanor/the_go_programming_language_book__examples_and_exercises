@@ -2,21 +2,21 @@ package api
 
 import (
 	"fmt"
-	"log"
-	"os"
+	//"log"
+	//"os"
 )
 
-func useEditor()(bool, error){
-	fmt.Println("Do you want to use Vim to add issue data? [y/N]")
-	var v string
-	fmt.Scanln(&v)
-	if v[0] == 'y' || v[0] == 'Y'{
-		f, err := os.CreateTemp("", "github_issues_crud_*")
-		if err != nil{
-			log.Println()
-		}
-	}
-}
+//func useEditor()(bool, error){
+	//fmt.Println("Do you want to use Vim to add issue data? [y/N]")
+	//var v string
+	//fmt.Scanln(&v)
+	//if v[0] == 'y' || v[0] == 'Y'{
+		//f, err := os.CreateTemp("", "github_issues_crud_*")
+		//if err != nil{
+			//log.Println()
+		//}
+	//}
+//}
 
 func ReadIssue() {
 	fmt.Print("Please specify the owner, repo, and issue number you want: ")
